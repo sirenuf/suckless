@@ -20,6 +20,11 @@ static const char *light_down[] = { "/usr/bin/light",   "-U", "5", NULL };
  */
 static const char *flameshot_gui[] = { "/usr/bin/flameshot", "gui", NULL };
 
+/*
+ * slock
+ */ 
+static const char *slock_activate[] = { "/usr/local/bin/slock", NULL };
+
 /* --- END CUSTOM --- */
 
 /* appearance */
@@ -126,6 +131,8 @@ static const Key keys[] = {
         { 0,            XK_Print,                       spawn,  {.v = flameshot_gui } },
         { 0,            XF86XK_MonBrightnessUp,         spawn,  {.v = light_up} },
         { 0,            XF86XK_MonBrightnessDown,       spawn,  {.v = light_down} },
+
+	{ MODKEY|ShiftMask,		XK_l,		spawn,	{.v = slock_activate} },
 };
 
 /* button definitions */
