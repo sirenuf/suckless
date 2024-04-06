@@ -1,5 +1,27 @@
 /* See LICENSE file for copyright and license details. */
 
+/* --- CUSTOM --- */
+#include <X11/XF86keysym.h>
+
+/* Volume control.
+ * From: https://gist.github.com/palopezv/efd34059af6126ad970940bcc6a90f2e
+ */
+static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",
+NULL };
+static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
+static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
+static const char *mutemic[] = { "/usr/bin/pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL };
+
+static const char *light_up[]   = { "/usr/bin/light",   "-A", "5", NULL };
+static const char *light_down[] = { "/usr/bin/light",   "-U", "5", NULL };
+
+/*
+ * Flameshot
+ */
+static const char *flameshot_gui[] = { "/usr/bin/flameshot", "gui", NULL };
+
+/* --- END CUSTOM --- */
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gaps between windows */
@@ -46,7 +68,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -96,6 +118,14 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+
+        { 0,            XF86XK_AudioLowerVolume,        spawn,  {.v = downvol } },
+        { 0,            XF86XK_AudioMute,               spawn,  {.v = mutevol } },
+        { 0,            XF86XK_AudioRaiseVolume,        spawn,  {.v = upvol   } },
+        { 0,            XF86XK_AudioMicMute,            spawn,  {.v = mutemic } },
+        { 0,            XK_Print,                       spawn,  {.v = flameshot_gui } },
+        { 0,            XF86XK_MonBrightnessUp,         spawn,  {.v = light_up} },
+        { 0,            XF86XK_MonBrightnessDown,       spawn,  {.v = light_down} },
 };
 
 /* button definitions */
