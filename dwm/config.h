@@ -34,7 +34,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const double activeopacity   = 1.0f;     /* Window opacity when it's focused (0 <= opacity <= 1) */
-static const double inactiveopacity = 0.6f;   /* Window opacity when it's inactive (0 <= opacity <= 1) */
+static const double inactiveopacity = 0.95f;   /* Window opacity when it's inactive (0 <= opacity <= 1) */
 static Bool bUseOpacity             = True;     /* Starts with opacity on any unfocused windows */
 static const char *fonts[]          = { "Terminess Nerd Font:size=11" };
 static const char dmenufont[]       = "Terminess Nerd Font:size=11";
