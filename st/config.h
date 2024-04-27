@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Comic Code:style=Regular:pixelsize=14:antialias=true:autohint=true"; 
-static int borderpx = 0;
+static char *font = "Comic Code:style=Normal:pixelsize=14:antialias=true:autohint=true"; 
+static int borderpx = 1;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -27,10 +27,10 @@ char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
 static float cwscale = 1.0;
-static float chscale = 1.0;
+static float chscale = 1.1;
 /* Character rendering offsets in pixels */
 static short cxoffset = 0;
-static short cyoffset = 0;
+static short cyoffset = 1;
 
 /*
  * word delimiter string
@@ -182,7 +182,7 @@ static const ColorScheme schemes[] = {
 };
 
 static const char * const * colorname;
-int colorscheme = 1;
+int colorscheme = 2;
 
 /*
  * Default colors (colorname index)
